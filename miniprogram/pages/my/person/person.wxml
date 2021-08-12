@@ -1,0 +1,53 @@
+<view class="person">
+
+<!-- 头像 -->
+<view class="person-item"  >
+  <view class="fl avatar">头像</view>
+  <image class="fr avatar-img" src='{{userArray.avatarUrl}}' bindtap="imgFlag">
+  </image>
+</view>
+
+<!-- 用户名 -->
+<view class="person-item">
+  <view class="fl avatar">用户名</view>
+  <view class="fr text" bindtap="goName">{{userArray.nickName}}</view>
+  <view class="name {{nameFlag?'activeName':''}}">
+      <input type="text" value="{{nameFlag?'':''}}" placeholder="修改你的用户名" maxlength="12" bindinput="getName"/>
+      <button type="primary" bindtap="updateName">修 改</button>
+  </view>
+</view>
+
+<!-- 性别 -->
+ <view class="person-item">
+  <view class="fl avatar">性别</view>
+  <view class="fr text">{{userArray.gender==1?'男':userArray.gender==0?'女':'未知'}}</view>
+</view>
+
+<!-- 专属ID -->
+<view class="person-item" style="background:rgba(0,0,0,.1)">
+  <view class="fl avatar">专属ID</view>
+  <view class="fr text">123</view>
+</view>
+
+<!-- 地址 -->
+<view class="person-item" style="background:rgba(0,0,0,.1);color:rgba(0,0,0,.5)">
+  <view class="fl avatar">地址</view>
+  <view class="fr icon">
+      <span class="iconfont icon-xy1 auto-img"></span>
+  </view>
+</view>
+
+</view>
+
+<!-- 头像上传模块 -->
+<view class="mask"  bindtap="imgFlag" style="background:{{imgFlag?'rgba(0,0,0,.5)':''}}; pointer-events:{{imgFlag?'all':'none'}};">
+  <view class="bigImg  {{imgFlag?'active':''}}">
+   <image class="img" src="{{userArray.avatarUrl}}"></image>
+   <view class="loadImg" catchtap="upload">上传新头像</view>
+  </view>
+</view>
+
+<!-- 修改用户名和性别模块 -->
+<!-- <view>
+   <view></view>
+</view> -->

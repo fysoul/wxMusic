@@ -1,0 +1,35 @@
+<view class="four">
+            <span class="line-fl"></span>
+            <span class="line_text">前端代码库</span>
+            <span class="line-fr"></span>
+</view>
+
+<view class="all">
+
+<view class="box">
+  <view class="first {{isSelect==0?'active':''}}" data-id="{{0}}" bindtap="go">HTML.CSS.JS</view>
+</view>
+
+
+<view class="box">
+   <view class="first {{isSelect==1?'active':''}}" data-id="{{1}}" bindtap="go">React</view>
+</view>
+
+<view class="box">
+<view class="first {{isSelect==2?'active':''}}" data-id="{{2}}" bindtap="go">Vue</view>
+</view>
+
+<view class="box">
+<view class="first {{isSelect==3?'active':''}}" data-id="{{3}}" bindtap="go">布局排列</view>
+</view>
+
+<view class="box">
+<view class="first {{isSelect==4?'active':''}}" data-id="{{4}}" bindtap="go">自定义动画效果</view>
+</view>
+
+<view class="box">
+
+ <view class="first {{isSelect==5?'active':''}}" data-id="{{5}}" bindtap="go"
+ style="background:rgba(0,0,0,.8)">其他技巧<span class="iconfont icon-js1"></span></view>
+</view>
+</view>

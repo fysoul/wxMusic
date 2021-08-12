@@ -1,0 +1,50 @@
+.person{
+  background-color: #fff;
+}
+
+.person-item{
+  height: 80rpx;
+  font-size: 28rpx;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #e8e8e8;
+  position: relative;
+}
+
+.avatar{
+  line-height: 80rpx;
+  color: #6a6a6a;
+}
+
+.avatar-img{
+  width: 80rpx;
+  height: 80rpx;
+  background-color: #ddd;
+}
+
+.text{
+  line-height: 80rpx;
+  color: #444;
+  font-size: 28rpx;
+  
+}
+
+
+.icon{
+  width: 28rpx;
+  height: 28rpx;
+  margin-top: 26rpx;
+  margin-right:10rpx;
+}
+
+/* 显示或修改头像 pointer-events: none;*/
+.mask{width: 100vw;height: 100vh;position: fixed;top: 0;left: 0;
+overflow: hidden;transition: all 1s;}
+.bigImg{width: 0rpx;height: 0rpx;margin:auto;left: 0;top: 0;right: 0;bottom: 0;margin: auto;position: absolute;transition: all 1s;font-size: 0;opacity: 0;}
+.img{width:100%;height:calc(100% - 80rpx);vertical-align: bottom;}
+.active{width: 500rpx;height:580rpx;font-size:32rpx;opacity: 1;}
+.loadImg{width: 100%;height: calc(100% - 500rpx);text-align: center;line-height:80rpx;background:white;}
+
+.name{width: 100%;height:370rpx;background: #e6e6e6;position: absolute;top:120rpx;left:100vw;z-index: 9;display: flex;flex-wrap: wrap; align-content: space-around;transition: all 1s;}
+.name input{width: 100%;height: 100rpx;text-align: center;}
+.name button{width: 50%;}
+.activeName{left: 0rpx;}

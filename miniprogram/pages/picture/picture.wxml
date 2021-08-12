@@ -1,0 +1,82 @@
+<view id="al" class="all" style="height:{{isSelect?height:'auto'}};">
+<!-- <view class="qx" hidden="{{!isSelect}}" bindtap="qx">取 消</view> -->
+  <view hidden="{{isSelect}}">
+
+
+       <!-- 上传图片地址 -->
+  <view class="start">
+      <input type="text" placeholder="上传图片地址" bindfocus="focus" bindblur="blur" style="box-shadow:0 0 {{ys}}rpx 0 red"/>
+      <view class="upload" bindtap="goUp">上传</view>
+  </view>
+
+<!-- 导航条 -->
+  <view class="clear box">
+     <view wx:for="{{title}}" wx:key="k" wx:for-item="it" wx:for-index="in" class="fl box_ {{in==is?'active':''}}" data-id="{{in}}" bindtap="toggle">{{it==0?'动漫':it==1?'风景':it==2?'人物':it==3?'头像':'其他'}}</view>    
+  </view>
+
+  <!-- 分割线条 -->
+  <view class="line">
+        <view class="line_l"></view>
+        <view class="line_r"></view>
+   </view>
+ 
+
+
+
+
+    <!-- 显示图片区域 -->
+    <view class="pic"  style="height:{{height}}">
+    <image class="size" wx:for="{{imageUrl}}" wx:key="key" wx:for-index="i" src="{{item.url}}" mode="widthFix" style="top:{{position[i].top+'px'}};left:{{position[i].left+'px'}}" bindload="{{i==imageUrl.length-1?'load':''}}" data-id="{{i}}" bindtap="check"></image>
+    </view>
+
+<!-- 上拉刷新 -->
+    <view class="up" hidden="{{flag}}" style="opacity: {{op}};">上 拉 加 载 更 多</view>
+    <view class="more" hidden="{{!flag}}" style="opacity: {{op}};">已 加 载 全 部</view>
+
+  </view>
+
+</view>
+
+<!-- 马赛克&上传图片地址 height:{{mask+'px'}}-->
+<view class="mask" style="height:100vh;line-height:{{mask+'px'}};" animation="{{animationData}}">
+  <view class="qx" hidden="{{!isSelect}}" bindtap="qx">取 消</view>
+  <view hidden="{{isSelect}}">正在加载</view>
+
+  <view class="sou" hidden="{{!isSelect}}">
+    <view class="first">请选择以下标签中的一项</view>
+    <view class="second_all clear">
+      <view class="second fl {{tag==0?'active':''}}" data-index="0" bindtap="change">动漫</view>
+      <view class="second fl {{tag==1?'active':''}}" data-index="1" bindtap="change">风景</view>
+      <view class="second fl {{tag==2?'active':''}}" data-index="2" bindtap="change">人物</view>
+      <view class="second fl {{tag==3?'active':''}}" data-index="3" bindtap="change">头像</view>
+      <view class="second fl {{tag==4?'active':''}}" data-index="4" bindtap="change">其他</view>
+    </view>
+    
+    <view class="three" bindtap="upload">确定上传</view>
+  </view>
+
+</view>
+
+
+
+<!-- 图片下载和收藏 -->
+<view class="message_box" style="height:{{system.windowHeight+'px'}};width:{{system.windowWidth+'px'}}" hidden="{{!check}}">
+   <view class="message_mask" bindtap="close"></view>
+   <view class="message" style="height:{{img.height+'px'}};">
+          <image class="fl message_image" src="{{img.src}}" style="max-height: {{system.windowHeight-100+'px'}}" mode="widthFix" bindtap="close"></image>
+          <view class="fl message_first">
+              <view class="fl message_msg iconfont icon-xiazai" bindtap="xiazai"></view>
+              <view class="fl message_msg iconfont {{img.sc?'active_sc':'icon-sc'}}" bindtap="get_pictureId"></view>
+              <view class="fl message_msg iconfont icon-xiugai xiu" bindtap="xiugai"></view>
+              <view class="fl message_msg iconfont icon-shanchu" bindtap="remove_picture"></view>
+          </view>
+          <!-- 修改图片类型 -->
+          <view class="fl xiugai" style="height:{{xiugai.height+'rpx'}};opacity:{{xiugai.opacity}};">
+               <view class="fl xiugai_first {{img.type==0?'active':''}}" data-xiugai='0' bindtap="updateTag">动漫</view>
+               <view class="fl xiugai_first {{img.type==1?'active':''}}" data-xiugai='1' bindtap="updateTag">风景</view>
+               <view class="fl xiugai_first {{img.type==2?'active':''}}" data-xiugai='2' bindtap="updateTag">人物</view>
+               <view class="fl xiugai_first {{img.type==3?'active':''}}" data-xiugai='3' bindtap="updateTag">头像</view>
+               <view class="fl xiugai_first {{img.type==4?'active':''}}" data-xiugai='4' bindtap="updateTag">其他</view>
+          </view>
+    </view>
+</view>

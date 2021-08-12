@@ -1,0 +1,15 @@
+.box{width: 100%;height: 200rpx;margin-bottom: 20rpx;padding-bottom: 60rpx;border-bottom: 1rpx solid #1AAD19;} 
+.box:last-child{border: none;}
+.title{width: 100%;height: 100rpx;line-height: 100rpx;text-indent: 10rpx;color: #1AAD19;}
+.one::after{content: ' 记录';font-size:32rpx;}
+.two::after{content: ' 日志';font-size:32rpx;}
+.three::after{content: ' 推荐';font-size:32rpx;}
+.four::after{content: ' 图片';font-size:32rpx;}
+.five::after{content: ' 音乐';font-size:32rpx;}
+.msg{width: 100%;height: 100rpx;display: flex;flex-wrap: nowrap;}
+.det:first-child{margin-left:120rpx;}
+.det{width: 190rpx;height: 100rpx;border-radius: 50rpx;
+  background: #1AAD19;margin-left:20rpx;color: rgba(255, 255, 255,1);
+  text-align: center;line-height: 50rpx;
+}
+/* background: red;background: blue;background: yellow; */

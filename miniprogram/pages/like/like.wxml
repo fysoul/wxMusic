@@ -1,0 +1,72 @@
+<span class="closeActive iconfont icon-xiangzuo1" bindtap="goIndex"></span>
+<swiper>
+   
+   <swiper-item>
+      <view class="all">
+      <view class="clear first">
+           
+            <image src="cloud://cloud2-5gvrnfck04d8ef24.636c-cloud2-5gvrnfck04d8ef24-1306243438/system/my9.png"></image>
+
+            <view class="first_end">音 乐</view>
+      </view>
+
+      <view class="middle">
+         <!-- <view class="gq">
+            <view class="bq">
+                  <view class="bq2 fl">
+                  <view></view>流行
+                  </view>
+                  <view class="bq2 fl">
+                  <view></view>二次元
+                  </view>
+            </view>
+            <view class="index">1.</view>
+            <view class="gm">only my railgun</view>
+            <view class="tb iconfont icon-shanchu"></view>
+            <view class="auth">frip</view>
+         </view> 
+         <view class="gq">
+            <view class="bq">
+                  <view class="bq2 fl">
+                  <view></view>经典
+                  </view>
+                  
+            </view>
+            <view class="index">2.</view>
+            <view class="gm">梦的光点</view>
+            <view class="tb iconfont icon-shanchu"></view>
+            <view class="auth">王心凌</view>
+         </view> -->
+         <view class="have" hidden="{{publicArray.length!=0}}">无喜欢的音乐,前去添加吧</view>
+         <view class="gq {{selectFlag==number?'musicActive':''}}" wx:for="{{publicArray}}" wx:key='k' data-music='{{music}}' data-number="{{number}}" wx:for-item='music' wx:for-index='number' bindtap="play">
+            <view class="index">{{number+1+'.'}}</view>
+            <view class="gm">{{music.name}}</view>
+            <view class="tb iconfont icon-shanchu" data-music='{{music}}' data-id='{{number}}' catchtap="removeMusic" ></view>
+            <view class="auth">{{music.author}}</view>
+         </view>        
+
+      </view>
+      </view>
+   </swiper-item>
+
+
+   <swiper-item>
+      <view class="pictrue">
+         
+         
+         <view class="clear first">
+            <!-- <view class="line {{animationflag?'active':''}}" style="transition:all {{animationflag?400:0}}ms linear;"></view> -->
+            <image src="cloud://cloud2-5gvrnfck04d8ef24.636c-cloud2-5gvrnfck04d8ef24-1306243438/system/6.jpg" ></image>
+            <view class="first_end" style="color:#fff">图 片</view>
+         </view>
+
+         <view class="pic middle">
+            <block wx:for="{{pictureArray}}" wx:key="key">
+                  <image class="tu" src="{{item.url}}"  data-id='{{index}}'  mode="widthFix" bindtap="download"></image>
+                  <view class="del iconfont icon-shanchu" data-id='{{index}}' bindtap="del"></view>
+            </block>
+         </view>
+      </view>
+   </swiper-item>
+</swiper> 
+

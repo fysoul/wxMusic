@@ -1,0 +1,6 @@
+@import "../template/template.wxss";
+/* 管理 */
+.manage{height: 100rpx;width: 100vw;}
+.manage view{width:100rpx;margin-right: 20rpx;line-height: 100rpx;text-align:center;}
+/* 下载操作 */
+.down{width: 100vw;height: 300rpx;}

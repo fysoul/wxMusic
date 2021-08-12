@@ -1,0 +1,95 @@
+/* 头部图片和通知 */
+swiper{width:calc(100% - 100rpx);height:100rpx;position: fixed;top: 200rpx;right: 0;background:rgba(0,0,0,0.3);}
+.top{width:100%;height:100rpx;line-height:100rpx;text-align: center;color: white;}
+.img{width:100%;vertical-align: bottom;}
+.loading{
+  width: 100%;
+  height: 420rpx;
+  position: absolute;
+  top: 0;text-align: center;
+  line-height: 420rpx;
+  font-size: 40rpx;
+  z-index: -1;
+}
+.close{width: 100rpx;height: 100rpx;position: fixed;top: 200rpx;left: 0;background:rgba(0,0,0,0.3);
+z-index: 10;color: white;text-align: center;line-height: 100rpx;}
+
+
+
+/* 每日推荐*/
+.xh{width: 100%;height: 100rpx;line-height: 100rpx;text-indent: 40rpx;font-size: 50rpx;color: #8DD2FC;} 
+.xh::after{content: '随机推荐';font-size: 32rpx;margin-left: 20rpx;line-height: 100rpx;}
+/* 推荐内容 */
+.text{width: 100vw;height:calc(100vw * 0.562);position: relative;}
+.text_mask{
+  width: 100%;height: 100%;position: absolute;left: 0;top: 0;
+  background: rgba(0,0,0,.5);line-height:calc(100vw * 0.562);
+  color: white;text-align: center;font-size: 40rpx;
+}
+.text image{width:100%;height:100%;}
+.text_box{width: 90%;height:90%;position: absolute;
+  top:0;left: 0;bottom: 0;right: 0;margin: auto;}
+.tj{width: 100%;height:24%;display: flex;justify-content:space-evenly;
+  color: white;border-bottom: 1rpx solid white; transition: all 1s;
+  }
+.type{width: 12%;height: 100%;text-align: left;}
+.name{width: 30%;height: 100%;overflow: hidden;text-align: left;}
+.sm{width: 18%;height: 100%;font-size: 26rpx;color: #e6e6e6;position: relative;}
+.authr{width: 30%;height: 100%;overflow: hidden;text-align: right;font-size: 28rpx;}
+.tj:last-child{border: none;}
+/* 描述 rgba(0,0,0,1)*/
+.des{
+ width: 400rpx;background:rgba(255,255,255,.5);position: absolute;
+ top:calc(100% + 2rpx);left:calc(50% - 200rpx);z-index: 11;
+ color: rgba(0,0,0,1);line-height: 40rpx;border: 1rpx solid #e6e6e6;box-shadow: 0rpx 0rpx 20rpx #e6e6e6;letter-spacing:4rpx;  opacity: 0;
+ transition: all 1s;pointer-events:none;
+ /* border-top: none; */
+}
+/* #969192; */
+.des::before{content: ' ';display: block;width: 0;height: 0;
+  border-left: 14rpx solid transparent;
+  border-right: 14rpx solid transparent;
+  border-bottom: 28rpx solid rgba(255,255,255,.3);
+  margin: 0rpx auto;margin-top: -28rpx;
+  
+}
+
+
+/* 感谢支持 */
+.cz{width: 100%;height: 100rpx;line-height: 100rpx;text-indent: 40rpx;font-size: 50rpx;color: #8DD2FC;margin-top: 20rpx;}
+.cz::after{content: '体验用户';font-size: 32rpx;margin-left: 20rpx;line-height: 100rpx;}
+/* 横向滚动条 */
+.scroll-box {
+  white-space: nowrap;
+  }
+.scroll-box .box_user{display: inline-block;}
+.box_user{width: 120rpx;height: 160rpx;margin: 0rpx 20rpx;
+  }
+.box_user image{width: 120rpx;height: 120rpx;border-radius: 50%;overflow: hidden;}
+.box_user view{width: 120rpx;height: 40rpx;font-size: 20rpx;text-align: center;overflow: hidden;}
+
+/* 导航栏 background: red;color:#8DD2FC;*/
+.mynav{width: 100%;height: 260rpx;display: flex;justify-content:center;flex-wrap: wrap;margin:20rpx auto 0rpx auto;}
+.select{width:40vw;height: 100rpx;margin:20rpx;background: rgba(44,44,44,1);float: left;
+     border-radius:20rpx;box-shadow: 10rpx 10rpx 5rpx rgba(0,0,0,.5);color: white;text-align: center;line-height:100rpx;transition: all 100ms linear;
+}
+
+/* 导航栏点击状态 */
+.active{box-shadow: none;font-size: 38rpx;}
+
+
+
+
+ /* 登录授权 */
+ .login_box{
+   width: 100vw;height: 100vh;
+   position: fixed;z-index: 100;
+   left: 0;top: 0;background: white;
+ }
+ .login{margin-top:40vh;}
+ button{width: 50%;height: 100rpx;line-height: 100rpx;}
+ /* 线条 */
+ .four{width: 100%;height: 40rpx;line-height: 40rpx;margin-top: 50rpx;}
+ .line-fl{width: 38%;height: 2rpx;display: inline-block;background: linear-gradient(45deg,#1AAD19,white);vertical-align: middle;}
+ .line_text{display: inline-block;height: 40rpx;width: 24%;text-align: center;vertical-align: middle;color:#1AAD19;font-size: 28rpx;}
+ .line-fr{width: 38%;height: 2rpx;display: inline-block;background: linear-gradient(45deg,white,#1AAD19);vertical-align: middle;}

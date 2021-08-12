@@ -1,0 +1,38 @@
+page{outline: none;border: none;border-radius: none;}
+/* 线条 */
+.line{width: 100%;height: 40rpx;line-height: 40rpx;margin-top: 100rpx;}
+.line-fl{width: 38%;height: 2rpx;display: inline-block;background: linear-gradient(45deg,#1AAD19,white);vertical-align: middle;}
+.line_text{display: inline-block;height: 40rpx;width: 24%;text-align: center;vertical-align: middle;color:#1AAD19;font-size: 28rpx;}
+.line-fr{width: 38%;height: 2rpx;display: inline-block;background: linear-gradient(45deg,white,#1AAD19);vertical-align: middle;}
+ 
+
+.middle{width: 100vw;height: 580rpx;margin-top: 80rpx;}
+/* 导航栏 */
+.nav{width: 200rpx;height: 580rpx;display: flex;flex-wrap: wrap;
+   align-content: space-between;
+}
+.tag{width: 100%;height: 100rpx;background:white;transform:translateX(-206rpx);text-align: center;line-height: 100rpx;box-shadow: 6rpx 6rpx 6rpx rgba(0, 0,0,.5);font-size: 32rpx;}
+/* 选中的样式 */
+.active{transform:translateX(0rpx);}
+/* 动态样式 */
+.activeTag{width: 190rpx;height: 95rpx;box-shadow: none;margin-bottom:6rpx;}
+/* 静态样式 */
+.activetype{background: #1AAD19;color: white;}
+
+/* 内容栏 */
+.text{width: calc(100vw - 240rpx);height: 580rpx;margin: 0rpx 20rpx;
+    box-shadow: 6rpx 6rpx 6rpx rgba(0, 0,0,.5);}
+.text input{width: 100%;height: 100rpx;border-bottom: 1rpx solid #e6e6e6; text-align: center;
+    } 
+.jj{height: calc(100% - 240rpx);width: calc(100% - 40rpx);
+    padding: 20rpx;border-bottom: 1rpx solid #e6e6e6;line-height: 46rpx;}
+.add{width: 100%;height: 100rpx;text-align: center;
+    background: #1AAD19;line-height: 100rpx;color: white;}
+
+/* 结尾部分 background: green;*/
+.end{width:100vw;height: calc(100vh - 900rpx);position: fixed;bottom:0 ;left: 0;margin-top: 100rpx;  overflow-y:auto;border-top: 1rpx solid #1AAD19;}
+.end .end_Box{width:100vw;height: calc(100vh - 900rpx);line-height:calc(100vh - 900rpx);text-align: center;}
+.end_text{width:100%;height: 100rpx;border-bottom:1rpx solid #e6e6e6;}
+.end_text text,.end_text view{width:16%;height: 100rpx;text-align: center;line-height: 100rpx;display: inline-block;overflow: hidden;}
+.end_text .title{text-align: left;width:36%;}
+.font{font-size: 60rpx;color: red;}

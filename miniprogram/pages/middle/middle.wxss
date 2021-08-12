@@ -1,0 +1,16 @@
+.four{width: 100%;height: 40rpx;line-height: 40rpx;margin-top: 50rpx;}
+.line-fl{width: 38%;height: 2rpx;display: inline-block;background: linear-gradient(45deg,#1AAD19,white);vertical-align: middle;}
+.line_text{display: inline-block;height: 40rpx;width: 24%;text-align: center;vertical-align: middle;color:#1AAD19;font-size: 28rpx;}
+.line-fr{width: 38%;height: 2rpx;display: inline-block;background: linear-gradient(45deg,white,#1AAD19);vertical-align: middle;}
+
+.all{height:calc(100vh - 90rpx);width: 80vw;margin: 0 auto;overflow: hidden;}
+.box{height: 110rpx;width:100%;margin-top:40rpx;}
+.first{height: 100rpx;width: calc(100% - 10rpx);background: #1AAD19;
+  border-radius:20rpx;text-align: center;position: relative;
+line-height: 100rpx;color: white;box-shadow:10rpx 20rpx 5rpx rgba(0, 0, 0, .6);transition:width 100ms ease,height 100ms ease;}
+
+.first span{color: red;font-size: 50rpx;position: absolute;top:0%;left: 10%;}
+
+/* 选中状态 */
+.active{height: 90rpx;width: calc(100% - 20rpx);
+font-size: 28rp;margin: 10rpx auto;box-shadow:inset 5rpx 10rpx 5rpx rgba(0, 0, 0, .6);}

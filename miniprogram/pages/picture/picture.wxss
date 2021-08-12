@@ -1,0 +1,76 @@
+/* @import "../../font/iconfont.wxss"; */
+page{background: #e6e6e6;}
+.all{width: 100%; background:#e6e6e6;overflow: hidden;}
+.line{margin:10rpx 0 10rpx 0;}
+.line::after{content: "";height:0;display:block;clear: both;}
+.line_l{width: 50%;height: 1rpx;background: linear-gradient(450deg,red,white);float: left;}
+.line_r{width: 50%;height: 1rpx;background: linear-gradient(-450deg,red,white);float: left;}
+
+
+/* .pic_position{
+  width: 100%;
+  position: absolute;
+  top: 0;left: 0;
+  background: #e6e6e6;
+  z-index: 10;
+} */
+  /* 上传图片地址 */
+  .start{width: 100%;height: 100rpx;position: relative;
+    overflow: hidden;margin-bottom: 50rpx;}
+  .start input{width: 60%;height: 50rpx;background: white;margin: 25rpx auto;text-indent: 10rpx;padding-left:30rpx;font-size: 28rpx;border: 1rpx solid red;}
+  .start view{position: absolute;width: 100rpx;height: 52rpx;background:red;right:18%;top: 25rpx;text-align: center;color: white;font-size: 28rpx;line-height: 50rpx;}
+/* 上传按钮 */
+.upload{position:relative;z-index: 2;}
+
+/* 
+选择的类型 */
+.box{text-align: center;display: flex;justify-content: center;line-height: 50rpx;}
+.box_{width: 100rpx;height: 50rpx;background: white; margin-left:20rpx;text-align: center;}
+.box_:last-child{margin-right: 20rpx;}
+
+
+
+/* 图片的布局 */
+.pic{width: 700rpx;position:relative;background: white;margin: 40rpx auto;}
+.pic image{position: absolute;width:340rpx;}
+
+/* 上拉刷新 */
+.up,.more{width: 100%;height: 50rpx;text-align: center;line-height: 50rpx;color:rgba(0, 0, 0, .6);font-size: 28rpx;}
+
+/* 马赛克 */
+.mask{width: 100%;background: rgba(255, 255, 255, 1);position: fixed;z-index: 999;transform:translateX(-100%);color:black;text-align: center;bottom: 0rpx;left:0rpx}
+/* 取消上传 */
+.qx{
+  width: 100%;height: 240rpx;
+  font-size: 120rpx;color: red;text-align: center;line-height: 240rpx;
+  position:relative;top: 0;left: 0;z-index: 1000;
+}
+
+/* 上传时选择标签 */
+.sou{width: 100%;height: 300rpx;line-height: 60rpx;border-top: 1rpx solid rgba(255, 255, 255, .5);}
+.second_all{width: 100%;height: 60rpx;display: flex;justify-content:center;margin-top: 60rpx;}
+.first{width: 100%;height: 60rpx;background:#e6e6e6;}
+.second{width: 100rpx;height:60rpx;background: #e6e6e6;margin: 10rpx;}
+.three{height:60rpx;width: 580rpx;background: red;margin:60rpx auto;color: white;}
+
+
+
+/* 图片下载和收藏 */
+.message_box{
+  position: fixed;top: 0;left: 0;z-index: 100;overflow: hidden;
+} 
+.message_mask{width: 100%;height: 100%;background:rgba(0,0,0,.9);position: absolute;top: 0;left: 0;z-index: 101;}
+.message{width: 700rpx;height:460rpx; position: absolute;left: 0;top: 0;bottom: 0;right: 0;margin: auto;z-index: 102;}
+.message_image{width: 700rpx;}
+.message_first{width: 700rpx;height: 60rpx;background: #e6e6e6;display: flex;justify-content:space-around;}
+.message_msg{width: 150rpx;height: 60rpx;text-align: center;line-height: 60rpx;}
+/* 收藏 */
+.active_sc{color: red;}
+/* 修改 */
+.xiugai{width: 100%;background:#e6e6e6;border-top: 1rpx solid black;transition: .8s ease;}
+.xiugai_first{height: 100%;width: 140rpx;line-height: 60rpx;text-align: center;color:black}
+
+
+/* 公共样式,要求优先级高 */
+.active{color: white;background: red;font-size: 26rpx;
+  box-shadow: 8rpx 8rpx 10rpx rgba(0, 0, 0, .6);}

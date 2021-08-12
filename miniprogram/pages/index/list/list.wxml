@@ -1,0 +1,97 @@
+<import src="../template/template.wxml"/>
+<view bindtap="closeRemove">
+    <span class="closeActive iconfont icon-xiangzuo1" bindtap="goIndex"></span>
+    <view class="four">
+            <span class="line-fl"></span>
+            <span class="line_text">长按图片删除</span>
+            <span class="line-fr"></span>
+   </view>
+    <view class="creat">
+        <span class="">自建歌单</span>
+        <span class="iconfont icon-tj1" bindtap="creatList"></span>
+    </view>
+    <scroll-view class='scroll-box' scroll-x='true'>
+        <!-- animation='{{animationCreate}}'  -->
+        <view class="box_img {{coverFlag?'':'animation'}}" wx:for="{{listArray}}" wx:key="k" catchtap="activeList" data-index="{{index}}" catchlongtap="showRemove">
+            <image class="img" src="{{item.url?item.url:(item.music[0].img||'cloud://cloud2-5gvrnfck04d8ef24.636c-cloud2-5gvrnfck04d8ef24-1306243438/music/music.png')}}">
+                <!-- catchlongtap="removeList"  -->
+                <view class="cover icon-close iconfont" hidden="{{coverFlag}}" catchtap="removeAllList"></view> 
+            </image>
+            <!-- <image class="img2" src='{{item.url}}'></image> -->
+            <view class="text">{{item.listName}}</view>
+            <view class="number icon-kaishi1 iconfont"> 100</view>
+            
+        </view>
+    </scroll-view>
+
+    <view class="creat">
+        <span class="">热门歌单</span>
+    </view>
+
+    <scroll-view class='scroll-box' scroll-x='true'>
+        <view class="box_img" wx:for="{{hotArray}}" wx:key='ke' wx:for-item='hot' wx:for-index='hotIndex'>
+            <view class="loading">待加载图片</view>
+            <image class="img" src='{{hot.url}}'></image>
+            <image class="img2" src='{{hot.url}}'></image>
+            <view class="text">{{hot.listName}}</view>
+            <view class="number icon-kaishi1 iconfont"> 100</view>
+        </view>
+    </scroll-view>
+
+    <view class="creat">
+        <span class="">推荐歌单</span>
+    </view>
+    <scroll-view class='scroll-box' scroll-x='true' wx:for="{{supArray}}" wx:key='key' wx:for-item='sup' wx:for-index='supIndex'>
+        <view class="box_img">
+            <view class="loading">待加载图片</view>
+            <image class="img" src='{{sup.url}}'></image>
+            <image class="img2" src='{{sup.url}}'></image>
+            <view class="text">{{sup.listName}}</view>
+            <view class="number icon-kaishi1 iconfont"> 100</view>
+        </view> 
+    </scroll-view>   
+</view>
+
+<!-- 新建歌单 -->
+<view class="mask_list mask" hidden="{{closeList}}">
+  <view class="mask_box">
+        <input type="text" placeholder="给你的歌单起个名吧" maxlength="12" bindinput="valueText"/>
+        <image  class="list_box"  bindtap="changeImag" src="{{addList.img}}"> 
+            <span class="{{addList.img?'':'icon-tj1'}} iconfont"></span>
+            <span>{{addList.img?'':'默认歌手封面'}}</span>
+        </image>
+        <view class="checkAdd">
+            <span bindtap="addCloud">保存</span>
+            <span bindtap="closeList">取消</span>
+        </view>
+  </view>
+</view>
+
+
+<!-- 歌单头部信息 -->
+<view class="list_show" animation='{{animationListShow}}'>
+    <view class="manage" >
+    <image class="img_box" src="{{listMsg.url?listMsg.url:listMsg.music[0].img}}" ></image>
+    <view class="list_msg">
+        <view class="msg_listName">
+            <text>{{listMsg.music.length}}首</text><text>歌单</text>{{listMsg.listName}}
+        </view>
+        <view class="msg_center clear">
+            <image class="fl" src="{{listMsg.url?listMsg.url:listMsg.music[0].img}}"></image>
+            <view class="msg_shadow"></view>
+            <view class="msg_box fl">
+                <view>
+                    <image src="{{userMsg.avatarUrl}}"></image>
+                    <span> {{userMsg.nickName}}</span>
+                </view>
+                <view>创建: {{listMsg.time}}</view>
+                <view>简介: {{listMsg.des}}</view>
+            </view>
+        </view>  
+    </view> 
+    </view>
+    <!-- 歌曲模块 -->
+    <template is="showItem"  data="{{publicArray,gqFlag,gqTimeFlag,now,maskFlag,msg}}"/>
+</view>
+<!-- 歌单模块 -->
+<template is="msgItem"  data="{{animationList,newListFlag,listArray,msg,listHave}}"/>

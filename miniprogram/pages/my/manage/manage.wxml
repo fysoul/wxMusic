@@ -1,0 +1,85 @@
+<view class="box">
+   <view class="title one iconfont icon-bt1"></view>
+   <view class="msg clear">
+      <view class="det fl">
+        <view>已完成</view>
+        <text>{{work.wc?work.wc+'条':'待统计'}}</text>
+      </view>
+      <view class="det fl">
+        <view>未完成</view>
+         <text>{{work.no?work.no+'条':'待统计'}}</text>
+      </view>
+      <view class="det fl">
+        <view>已过期</view>
+         <text>{{work.gq?work.gq+'条':'待统计'}}</text>
+      </view>
+   </view>
+</view>
+<view class="box">
+   <view class="two title iconfont icon-rz3"></view>
+   <view class="msg clear">
+      <view class="det fl">
+         <view>共</view>
+         <text>{{journal.all?journal.all+'条':'待统计'}}</text>
+      </view>
+      <view class="det fl">
+        <view>已标记</view>
+         <text>{{journal.bj?journal.bj+'条':'待统计'}}</text>
+      </view>
+   </view>
+</view>
+
+<!-- 推荐 -->
+<view class="box"> 
+   <view class="three title iconfont icon-tuijian1"></view>
+   <view class="msg clear">
+      <view class="det fl">
+         <view>共</view>
+         <text>{{rec.all?rec.all+'条':'待统计'}}</text>
+      </view>
+      <view class="det fl">
+        <view>成功推荐</view>
+         <text>{{rec.tj?rec.tj+'条':'待统计'}}</text>
+      </view>
+      <view class="det fl">
+        <view>审核中</view>
+         <text>{{rec.sh?rec.sh+'条':'待统计'}}</text>
+      </view>
+   </view>
+</view>
+
+
+<!-- 图片 -->
+<view class="box">
+   <view class="four title iconfont icon-tp3"></view>
+   <view class="msg clear">
+      <view class="det fl">
+         <view>我的图片</view>
+         <text>{{pictrue.all?pictrue.all+'张':'待统计'}}</text>
+      </view>
+      <view class="det fl">
+        <view>我的收藏</view>
+         <text>{{pictrue.sc?pictrue.sc+'张':'待统计'}}</text>
+      </view>
+   </view>
+</view>
+
+<!-- 音乐 -->
+<!-- <view class="box">
+   <view class="five title iconfont icon-yy3"></view>
+   <view class="msg clear">
+      <view class="det fl">
+         <view>我的音乐</view>
+         <text>{{music.all}}首</text>
+      </view>
+      <view class="det fl">
+        <view>我的收藏</view>
+         <text>{{music.sc}}首</text>
+      </view>
+
+      <view class="det fl">
+        <view>我的下载</view>
+         <text>{{music.xz}}首</text>
+      </view>
+   </view>
+</view> -->

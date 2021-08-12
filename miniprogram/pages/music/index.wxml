@@ -1,0 +1,68 @@
+
+<view class="all">
+   <image class="img" src="cloud://cloud2-5gvrnfck04d8ef24.636c-cloud2-5gvrnfck04d8ef24-1306243438/system/a11.jpg" mode="widthFix">
+       
+   </image>
+   <view class="loading">待加载图片</view>
+   <view class="close"  bindtap="close" hidden="{{closeflag}}">
+      <view class="icon-gb1 iconfont" animation='{{animationData}}'></view>
+   </view>
+   
+   <block wx:if="{{arrayTime.length>0||journal.length>0}}">
+    <swiper autoplay="true" hidden="{{closeflag}}" duration="2000" interval='3000' circular>
+         <swiper-item wx:for="{{arrayTime}}" wx:key='key'> 
+            <view class="top" >{{ '工作项目: '+ item+' 即将到期'}}</view>
+         </swiper-item>
+         <swiper-item wx:for="{{journal}}" wx:key="ke" wx:for-item='it'>
+            <view class="top" >{{'明日'+it+',请做好准备'}}</view>
+         </swiper-item>
+    </swiper>
+</block>
+
+<block wx:else>
+    <swiper autoplay="true" hidden="{{closeflag}}" duration="2000" interval='3000' circular>
+        <swiper-item> 
+            <view class="top">近期没有行程或完成项目</view>
+         </swiper-item> 
+    </swiper>
+</block> 
+
+<view class='mynav'>
+    <view class=" select iconfont icon-like" data-id='{{0}}' style="color:#1ECD99;" bindtap="goMusic"> 收藏</view>
+    <view class="iconfont icon-tp3 select" data-id='{{1}}' style="color:red;" bindtap="goPicture"> 图片</view> 
+    <view class="select iconfont icon-xx1" data-id='{{2}}' style="color:white" bindtap="goWork"> 记录</view>
+    <view class="select iconfont icon-rz3" data-id='{{3}}' style="color:#9BDBDD;" bindtap="goGournal"> 日志</view>
+</view> 
+
+<!-- 每日推荐-->
+<view class="xh iconfont icon-xh2"></view>
+  <view class="text">
+       <image src="{{src}}"></image>
+       <view class="text_mask">{{imgFlag?'':'待加载图片'}}</view>
+       <view class="text_box"> 
+        <!-- hidden='{{desflag||showID==0?false:true}}' dm2-->
+
+        <view class="tj clear" style="line-height:{{height+'px'}};opacity:{{desflag||showID>=id?1:0}}" wx:for="{{rec}}" wx:key='k' wx:for-item='rec' wx:for-index='id'>
+           <view class="fl type {{rec.type==0?'icon-dm2':rec.type==1?'icon-yingshi2':rec.type==2?'icon-yy3':rec.type==3?'icon-yule3':'icon-qita1'}} iconfont"></view>
+           <view class="fl name">{{rec.title}}</view>
+           <view class="fl sm" bindtap="des" data-id='{{id}}'>点击简介
+                <text class="des" decode="true"  style="opacity:{{showID==id?1:0}}">&nbsp;&nbsp;&nbsp;&nbsp;{{rec.text}}</text>
+           </view>
+           <view class="fl authr">{{rec.nickName}}</view>
+        </view>
+
+      </view>
+       
+    </view>
+
+<!-- 感谢支持 -->
+  <view class="cz iconfont icon-xh2"></view>
+    <view></view>
+  <scroll-view class='scroll-box' scroll-x='true'>
+      <view class="box_user" wx:for="{{user}}" wx:key='kk' wx:for-item='it' wx:for-index='in'>
+          <image src="{{it.avatarUrl}}"></image>
+          <view>{{it.nickName}}</view>
+      </view>
+</scroll-view>
+
+</view>

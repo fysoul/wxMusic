@@ -1,0 +1,44 @@
+{
+  "id": "2657222",
+  "name": "msg",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "16376884",
+      "name": "收藏",
+      "font_class": "biaoqianA01_shoucang-13",
+      "unicode": "ea96",
+      "unicode_decimal": 60054
+    },
+    {
+      "icon_id": "5270852",
+      "name": "收 藏-产品详情",
+      "font_class": "shoucang",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "5474827",
+      "name": "下载",
+      "font_class": "xiazai",
+      "unicode": "e637",
+      "unicode_decimal": 58935
+    },
+    {
+      "icon_id": "11526819",
+      "name": "修改",
+      "font_class": "xiugai",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "20418535",
+      "name": "删除",
+      "font_class": "shanchu",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    }
+  ]
+}

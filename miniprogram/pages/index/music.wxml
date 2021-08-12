@@ -1,0 +1,161 @@
+
+<import src="template/template.wxml"/>
+<view class="all">
+
+  <view class="flexBox">
+  <view class="sousuo">
+    <!-- 搜索和历史记录 -->
+     <image  src="/images/music/sousuo.png"></image>
+      <input id="in" type="text" placeholder="搜索音乐" bindconfirm='search' confirm-type="search"  value="{{value}}"/>
+  </view>
+  <view class="size">
+    <view class="size_fl" bindtap="goLike">
+      <image src="/images/music/xh.png"></image>
+      <view>喜欢</view>
+    </view>
+    <view class="size_fl" bindtap="goList">
+      <image src="/images/music/gd.png"></image>
+      <view>歌单</view>
+    </view>
+    <view class="size_fl" bindtap="goDown">
+      <image src="/images/music/xz.png"></image>
+      <view>下载</view>
+    </view>
+    <view class="size_fl" bindtap="goStorage">
+      <image src="/images/music/ls.png"></image>
+      <view>历史</view>
+    </view>
+    <span class="{{search.length>0?'iconfont icon-xiangzuo1':''}}  goMusic" bindtap="goMusic"></span>
+  </view>
+
+  <view  class="close" data-nowarr="{{0}}">{{nowMusic.name}}</view>
+    <!-- 歌词\海报 -->
+    <view class="picture">
+    <!-- <view class='closePictrue' animation='{{animationLeft}}'>
+      <image src="cloud://cloud2-5gvrnfck04d8ef24.636c-cloud2-5gvrnfck04d8ef24-1306243438/music/byg.png" ></image>
+    </view>
+    
+    <view class='closePictrue' animation='{{animationRight}}'>
+      <image src="cloud://cloud2-5gvrnfck04d8ef24.636c-cloud2-5gvrnfck04d8ef24-1306243438/music/byg2.png" ></image>
+    </view> -->
+       
+        <!-- 歌词显示 -->
+        <view class="lyrics">
+          <!-- cloud://cloud2-5gvrnfck04d8ef24.636c-cloud2-5gvrnfck04d8ef24-1306243438/music/music.png-->
+          <view class="loading">正在加载图片资源</view>
+          <image src="cloud://cloud2-5gvrnfck04d8ef24.636c-cloud2-5gvrnfck04d8ef24-1306243438/music/music.png"></image>
+          <view class="lyrics_box">
+              <scroll-view  enhanced='true' scroll-into-view="{{'lyr'+(huIndex-1)}}" show-scrollbar='false' bindtouchmove='showHeight' bindtouchend="closeHeight" scroll-with-animation='true'>
+                <view class="lyrics_animation" animation='{{animationLyr}}'>
+                  <view id="lyr0" class="jl"></view>
+                  <view id="lyr1" class="jl"></view>
+                  <view id="{{'lyr'+(lyrNumber+2)}}" class="jl {{lyrIndex-1==lyrNumber?'active':''}}" wx:for="{{lyrText}}" wx:key='lyr' wx:for-item="lyrItem" wx:for-index='lyrNumber'>{{lyrItem}}</view>
+                 
+                </view>
+                
+              </scroll-view>
+           
+           
+          </view>
+            
+        </view>
+
+    </view>
+   
+   <view class="msg_box">
+      <view class="msg">
+      <view class="fl indexBf" style="opacity:{{nowMusic.musicid?1:0}};">
+          <swiper duration="5000" interval="5000" circular='true' autoplay="{{nowMusic.musicid&&playFlag}}" easing-function="linear">
+              <swiper-item>
+                    <view>{{'当前播放: '+nowMusic.name}}</view>
+              </swiper-item>
+              <swiper-item>
+                    <view style="text-align:left;">{{'歌手: '+nowMusic.author}}</view>
+              </swiper-item>
+              <swiper-item>
+                    <view style="text-align:left;">{{'专辑: '+nowMusic.gd}}</view>
+              </swiper-item>
+          </swiper>
+      </view>
+      <view class="box_pic fr">
+      <view class="pic">
+        {{nowMusic.img&&nowMusic.img!='undefined'?'':'V'}}
+        <!-- <image src="../../images/music/cover.png"></image> -->
+        <image class="fr" src="{{nowMusic.img&&nowMusic.img!='undefined'?nowMusic.img:''}}" animation='{{animationRotate}}' ></image> 
+      </view>
+        
+      </view>
+      
+      </view>
+   </view>
+ 
+</view>
+
+  <!-- 控件区域 定位-->
+  <view class="control">
+   
+    <view class="caozuo">
+        <span class="iconfont {{nowMusic.src?'icon-yxz1':'icon-xiazai'}}" data-nowmusic="{{nowMusic}}"  bindtap="download"></span>
+        <span class="iconfont icon-sc" style="color:{{nowMusic.like?'red':''}}" bindtap="changeLike" data-nowmusic="{{nowMusic}}"></span>
+        <span class="iconfont icon-tj1" bindtap="musicList" data-nowmusic="{{nowMusic}}"></span>
+    </view>
+  <view class="progress">
+    <slider  value="{{time.progress}}" backgroundColor='#e6e6e6' activeColor='#1ECD99' block-size='1' left-icon="cancel" right-icon="success_no_circle" bindchange='changing'></slider>
+    <view class="fl">{{time.now}}</view>
+    <view class="fr">{{time.duration}}</view>
+  </view>
+    
+    <view class="control_box">
+         <view class="iconfont {{change==0?'icon-lbxh1':change==1?'icon-dqxh1':'icon-sjbf1'}} fl" data-change='{{change}}' bindtap="change"></view>
+         <view>
+             <span class="iconfont icon-syg1" data-index='{{3}}' bindtap="playNext"></span>
+             <span class="iconfont {{playFlag?'icon-zanting1':'icon-kaishi1'}}" bindtap="pause"></span>
+             <span class="iconfont icon-xyg1" data-index='{{4}}' bindtap="playNext"></span>
+         </view>
+    </view>
+  </view>
+
+</view>
+
+
+<!-- 搜索的歌曲页面 -->
+<view class="search {{leftFlag?'activeSearch':''}}">
+     <!-- 歌名\歌手\图片\收费\时长\ -->
+    <view class="search_sousuo sousuo">
+    <!-- 搜索和历史记录 -->
+     <image  src="/images/music/sousuo.png"></image>
+      <input id="in" type="text" placeholder="搜索音乐" bindconfirm='search' confirm-type="search" value="{{value}}"/>
+      <view class="fl bf" style="opacity:{{nowMusic.musicid?1:0}};">
+         <swiper duration="5000" interval="5000" circular='true' autoplay="{{nowMusic.musicid&&playFlag}}" easing-function="linear">
+             <swiper-item>
+                  <view>{{(nowMusic.number?nowMusic.number:'')+'当前播放: '+nowMusic.name}}</view>
+             </swiper-item>
+             <swiper-item>
+                  <view class="musicName">{{'歌手: '+nowMusic.author}}</view>
+             </swiper-item>
+         </swiper>
+      </view>
+      <span class="iconfont icon-xy1 fr" bindtap="goMusic"></span>
+    </view>
+
+  <scroll-view class="box_gq" scroll-y='true' bindscrolltolower='load'>
+
+    <view class="gq {{gqFlag==index?'gqActive':''}} {{gqTimeFlag==index?'gqAnimate':''}}" wx:for="{{search}}" wx:key='key' data-index="{{index}}" bindtap="gqFlag">
+      <view class="gq_xx">{{index>=9?(index+1):'0'+(index+1)}}</view>
+      <view class="gq_xx maxWidth">
+        <view class="">{{item.name}}</view>
+        <view class="author"><image src="../../images/music/wc.png" style="width:{{item.src?'30rpx':'0rpx'}};height:{{item.src?'30rpx':'0rpx'}}"></image> {{item.author}}<text class="fee" style="background:{{item.fee==1?'#1ECD99':''}};">{{item.fee==1?'fee':''}}</text></view>
+      </view>
+      <view class="gq_xx iconfont {{fromNet==index&&playFlag?'icon-zt1':'icon-bf1'}}" data-nowarr="{{5}}" data-index="{{index}}" data-music='{{item}}' bindtap="{{fromNet==index?'pause':'play'}}"></view>
+      <view class="gq_xx iconfont icon-slh1" catchtap="goMask" data-now='{{index}}' data-item="{{item}}"></view>
+    </view> 
+    
+  </scroll-view>
+  <template is="indexItem"  data="{{maskFlag,msg}}"/>
+</view>
+
+<!-- 歌单模块 -->
+<template is="msgItem"  data="{{animationList,newListFlag,listArray,msg,listHave}}"/>
+
+
+

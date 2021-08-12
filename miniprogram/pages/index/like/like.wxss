@@ -1,0 +1,15 @@
+
+@import "../template/template.wxss";
+
+.manage{
+  line-height: 150rpx;text-align: center;
+}
+
+
+
+
+
+
+
+
+

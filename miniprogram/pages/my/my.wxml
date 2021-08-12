@@ -1,0 +1,50 @@
+
+<view class="login" animation='{{animationData}}'>
+      <button type="primary" bindtap="getUser" >获取用户权限</button>
+      <view class="four">
+            <span class="line-fl"></span>
+            <span class="line_text">授权开启功能</span>
+            <span class="line-fr"></span>
+      </view>
+</view>
+
+<view class="all" animation='{{animationData}}'>
+    <view class="first_box">
+      <view class="first_one"></view>
+      <!-- <view class="loading">待加载图片资源</view> -->
+      <image src="cloud://cloud2-5gvrnfck04d8ef24.636c-cloud2-5gvrnfck04d8ef24-1306243438/my/37.jpg"></image>
+      <view class="msk"></view>
+      <view class="abs">
+           
+          <image class="fl" src="{{user.avatarUrl}}">
+            <view class="loading">待加载</view>
+          </image>
+          <view class="fl">{{user.nickName}}</view>
+      </view>
+    </view>
+    <view class="second clear {{selectFlag==0?'active':''}}" data-id='{{0}}' bindtap="goPerson">
+      <view class="second_one fl">个人资料</view>
+      <!-- iconfont icon-xy2 -->
+      <span class="iconfont icon-xy1 fr"></span>
+    </view>
+
+    <view class="second clear {{selectFlag==1?'active':''}}" data-id='{{1}}' bindtap="goPerson">
+      <view class="second_one fl">我的推荐</view>
+      <span class="iconfont icon-xy1 fr"></span>
+    </view>
+
+    <view class="second clear {{selectFlag==2?'active':''}}" data-id='{{2}}' bindtap="goPerson">
+      <view class="second_one fl">我的文件</view>
+      <span class="iconfont icon-xy1 fr"></span>
+    </view>
+
+    <view class="second clear {{selectFlag==3?'active':''}}" data-id='{{3}}' bindtap="goPerson">
+      <view class="second_one fl">信息一览</view>
+      <span class="iconfont icon-xy1 fr"></span>
+    </view>
+
+    <view class="second clear {{selectFlag==4?'active':''}}">
+      <view class="second_one fl">通知</view>
+      <span class="fr tz"><text> +99</text></span>
+    </view>
+</view>

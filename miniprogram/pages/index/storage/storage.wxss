@@ -1,0 +1,4 @@
+@import "../template/template.wxss";
+.manage{text-align: center;line-height: 150rpx;}
+.manage text{display: inline-block;float: right;margin-right: 20rpx;}
+.box_gq{height: calc(100vh - 210rpx);}

@@ -1,0 +1,50 @@
+page{background:#e6e6e6;}
+.first{height: 100%;height: calc(100vw * 0.56);position: relative;}
+.first image{width: 100%;height: 100%;vertical-align: top;}
+.first_end{width: 100%;height: 100rpx;background: rgba(0, 0, 0, .8);clear: both;line-height: 100rpx;text-align: center;color: #1ECD99;position: absolute;}
+
+
+.all{width: 100%;height: 100vh;}
+.middle{width: 90%;height: calc(100vh - 150rpx - calc(100vw * 0.56)); background: white;margin: 150rpx auto 0rpx auto;overflow-y: scroll;}
+
+/* 歌曲 */
+.auth{width: 80%;height: 48rpx;font-size: 28rpx;margin-left:100rpx;}
+.gm{width: 74%;height: 52rpx; margin-left: 70rpx;line-height: 52rpx;overflow: hidden;}
+.tb{width: 70rpx;height: 40rpx; position: absolute;right: 0rpx;top: 30rpx;}
+.gq{width: 100%;height: 100rpx; margin: 20rpx auto;position: relative;}
+.gq::after{content:'';display: block;width: 94%;height: 1rpx;background:#1ECD99;margin: 0rpx auto;}
+.index{height: 100rpx;width:2%; line-height:100rpx;position: absolute;margin-left:20rpx;}
+.musicActive{color: #1ECD99;}
+
+/* 标签2 */
+.bq{width:260rpx;height:50rpx; position: absolute;right: 100rpx;vertical-align: bottom;
+bottom:0rpx;}
+
+.bq2{width: 120rpx;height: 50rpx;background: #1ECD99;
+  border-top-left-radius:10rpx;border-top-right-radius: 10rpx;
+  line-height: 50rpx;text-align: center;color: white;font-size: 28rpx;margin-right: 5rpx;}
+.bq2 view{border-radius: 50%;width:15rpx;height: 15rpx;background:white;margin: 5rpx;position: absolute;}
+.have{text-align: center;width: 100%;height: 100rpx;line-height: 100rpx;color: #1ECD99;}
+
+/* swiper容器 */
+swiper{
+  height: 100vh;width: 100vw;
+}
+
+/* 图片 */
+.pictrue{background: white;}
+.line{width:40rpx;height:calc(100rpx + calc(100vw * 0.56));position: absolute;top:0;left:-180rpx;z-index: 99;
+transform: skewX(-30deg);
+background: linear-gradient(0,yellow,white,rgba(253, 245, 165,1));
+}
+.pic{width: 80%;}
+.tu{width:100%;vertical-align: bottom;}
+.del{width:100%;height:60rpx;line-height:60rpx;text-align: center;background:rgba(0, 0, 0, .8);color: #fff;margin-bottom: 40rpx;}
+.active{left:calc(100vw + 150rpx);}
+
+/* 关闭当前页 */
+.closeActive{
+  width: 60rpx;height: 60rpx;
+  position: fixed;top: 4vh;left: 1vw;z-index: 999;
+  font-size: 48rpx;line-height: 60rpx;
+}

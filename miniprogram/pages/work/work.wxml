@@ -1,0 +1,143 @@
+<view style="width:100%">
+  <view class="qx" hidden="{{isShow}}" style="height:{{qx+'px'}};line-height:{{qx+'px'}};" bindtap="qx">取消</view>
+
+  <view class="zuozu" style="transform: translateX({{-system.windowWidth/2+'px'}});" animation="{{animationZuo}}">
+     <image src="{{image[0]}}"></image>     
+  </view>
+
+  <view class="mr" style="transform: translateX({{system.windowWidth+'px'}})"  animation="{{animationMr}}">
+  <image src="{{image[1]}}"></image>
+  </view><!--长宽比:375/518,0.72//my4,my9-->
+
+  <view  hidden="{{!isShow}}">
+    <view>
+       <view class="tou">
+         <textarea  class="header" disabled="{{!saveFlag}}" maxlength="180" value="{{update.text}}" style="color:{{update.text==''?'#8e8e8e':''}}" placeholder="{{update.text==''?'There is currently no project content':update.text}}"   bindinput="updateTextarea"></textarea>
+         <view class="xiugai iconfont icon-xiugai" wx:if="{{!saveFlag}}" bindtap="xiugai"></view>
+         <view class="caozuo" style="transform: translateX({{system.windowWidth+'px'}});" animation="{{animationData}}">
+            <view class="fl baocun iconfont icon-baocun" bindtap="update"></view>
+            <view class="fl quxiao iconfont icon-quxiao" bindtap="chexiao"></view>
+            
+         </view>
+        
+      </view>
+       
+       
+       <view class="middle">
+            <view class="first clear dh" data-index="1" style="border-bottom: none;">
+              <view class="xh fl" style=" border-right: none;"><text decode="true">&nbsp;</text></view>
+              <view class="xm fl" style="text-align:center;">项目</view>
+              <!-- xiaziFlag -->
+              <view class="wj fl" wx:if="{{xiaziFlag}}" catchtap="downFlag">下载</view>
+              <view class="wj fl" catchtap="downFlag" wx:else>复制</view>
+              <view class="sj fl">日期</view>
+              <view class="js fl" >计时</view>
+              <view class="fq fl " catchtap="caozuo" wx:if="{{!completeFlag}}">
+                {{!caozuo?'完成':'删除'}}
+              </view> 
+              <view class="fq fl " catchtap="caozuo" wx:else>
+              {{!caozuo?'驳回':'删除'}}
+              </view>
+            </view>
+
+            <view class="first clear {{update.id==index?'ysactive':''}}" wx:for="{{pagexm}}" wx:key='k' data-id='{{index}}' bindtap="select">
+              <view class="xh fl">{{index+1+(page.number-1)*5}}</view>
+              <view class="xm fl">{{item.name}}</view>
+
+              <view class="wj fl iconfont icon-xiazai" hidden="{{!xiaziFlag}}" data-id='{{index}}' catchtap="download"></view>
+              <view class="wj fl iconfont icon-fz1" hidden="{{xiaziFlag}}" data-id='{{index}}' catchtap="copy"></view>
+
+              <view class="sj fl">{{item.nowdate}}</view>
+              <view class="js fl" style="color:{{completeFlag?'':arrayDay[index]<0?'red':''}}">{{completeFlag?'已完成':arrayDay[index]==0?'本日':arrayDay[index]>0?arrayDay[index]+'D':'已过期'}}</view>
+              <block wx:if="{{!completeFlag}}">
+                <view class="fq fl iconfont icon-wc3" data-id='{{index}}' wx:if="{{!caozuo}}" catchtap="moveType"></view>
+                <view class="fq fl iconfont icon-shanchu" data-id='{{index}}' wx:else catchtap="remove"></view>
+              </block>
+              <block wx:else>
+                <view class="fq fl iconfont icon-yc2" data-id='{{index}}' wx:if="{{!caozuo}}" catchtap="moveType"></view>
+                <view class="fq fl iconfont icon-shanchu" data-id='{{index}}' wx:else catchtap="remove"></view>
+              </block>
+
+            </view>
+       </view>
+       
+    </view>
+
+    <!-- //结尾部分 -->
+    <view class="pageNumber">
+        <view class="fl page_public page_first" hidden="{{page.number==1?true:false}}"
+        data-page='{{1}}' bindtap="toggle">首页</view>
+
+        <view class="fl page_public page_second" hidden="{{page.number==1?true:false}}"data-page='{{(page.number-1)<1?1:(page.number-1)}}' bindtap="toggle">上一页</view>
+        <view class="fl page_public page_three">{{page.number}}</view>
+
+        <view class="fl page_public page_four" hidden="{{page.number==page.total?true:false}}" data-page='{{(page.number+1)>page.total?page.total:(page.number+1)}}' bindtap="toggle">下一页</view>
+
+        <view class="fl page_public page_six" hidden="{{page.number==page.total?true:false}}" data-page='{{page.total}}' bindtap="toggle">尾页</view>
+    </view> 
+   
+    <!-- 已完成和未完成 -->
+    <view class="wc_box clear">
+        <view class="wcflag fl {{completeFlag==false?'wcActive':''}}" data-number='0' bindtap="CompleteFlag">
+            <view>未完成</view>
+            <view>{{completeFlag==false?page.length:'点击查看'}}</view>
+        </view>
+        <view class="wcflag fl {{completeFlag!=false?'wcActive':''}}" data-number='1' bindtap="CompleteFlag">
+            <view>已完成</view>
+            <view>{{completeFlag!=false?page.length:'点击查看'}}</view>
+        </view>
+    </view>
+  </view>
+    
+
+
+    <view class="book" hidden="{{isShow}}">
+
+      <view class="checks clear">
+       <view class="fl checks_ ">
+         <view class="check fl checkActive"></view>
+         <text class="fl">保存</text>
+       </view>
+       
+       <view class="fl checks_">
+         <view class="check fl"></view>
+         <text class="fl">记录</text>
+       </view>        
+      </view>
+        
+      <view class="text_box">
+              <view class="clear book_in">
+                <view class="fl title">项目名称</view>
+                <input class="fl" type="text" bindchange="blur" value="{{addxm.name}}" maxlength="12"/>
+              </view>
+              <view class="book_in">
+                <view class="fl title">完成时间</view>
+                <picker mode="date" start="{{addxm.nowdate}}" end="2022-01-01" bindchange='completeTime' style="color:{{addxm.completedate==''?'#8e8e8e':'black'}}">
+                     {{addxm.completedate==''?'当前日期:'+addxm.nowdate:addxm.completedate}}
+                </picker>
+              </view>
+              <view class="book_in">
+                <view class="fl title">项目资料</view>
+                <view class="fl upload" bindtap="upload" style="color:{{upload.name=='上传文档类型资料,其他文件下载无效'?'#8e8e8e':'red'}}">{{upload.name }}
+                </view>
+              </view>
+
+              <view class="nr">
+                  <view class='book_text'>内 容</view>
+                  <textarea bindinput="addTextarea" maxlength="180" value="{{addxm.text}}" auto-focus="true"></textarea>
+              </view>
+              
+              
+      </view>
+
+
+        <view class='book_add' bindtap="check">添 加</view> 
+    </view>
+    <view class="flex" bindtap="goBook">记录</view> 
+    <!-- !mask -->
+        <view class="mask" hidden="{{!mask}}" style="height:{{system.windowHeight+'px'}};width:{{system.windowWidth+'px'}}">
+            <view class="mask_middle">正在切换,请等待</view>
+            <view class="jiazai iconfont icon-jz2" animation="{{animationMask}}"></view>
+        </view>
+</view>
+

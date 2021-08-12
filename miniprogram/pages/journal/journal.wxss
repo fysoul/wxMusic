@@ -1,0 +1,69 @@
+page{ background:white;}
+/* 公共样式 */
+.center{display: flex;justify-content: center;}
+
+/* 布局样式 */
+.first{width:100%;height: 100rpx;margin:65rpx 0 50rpx 0;}
+.pageNumber{width:240rpx;height: 100rpx;position: fixed;left: 0;right: 0;top: 0;margin: auto;text-align: center;font-size: 28rpx;}
+.first_one{width: 240rpx;height:100rpx;background:#9BDBDD;margin-right:50rpx;line-height: 100rpx;text-align: center;border-radius: 50rpx}
+.first_one:last-child{margin: 0;}
+
+/* 内容区域 height: 1000rpx; */
+.second{width: 90%;margin: 0rpx auto;}
+.second_one{width: 100%;height: 80rpx;position: relative;line-height: 80rpx;border-bottom: 1rpx solid #9BDBDD;text-align: center;}
+.second_one>span{width: 80rpx;height: 80rpx;position: absolute;top: 0;left: 0;font-size: 40rpx;color:#9BDBDD;}
+.second_one view{width: 100%;height: 100%;}
+.second_two{width: calc(100% - 4rpx); background:rgba(155,219,221,.7);border: 1rpx solid #9BDBDD;border-top: none;}
+.second textarea{width:calc(100% - 62rpx);height:calc(500rpx - 60rpx);background:rgba(155,219,221,.3);padding: 30rpx;border: 1rpx solid #9BDBDD;border-top: none;line-height: 50rpx;}
+
+.second_three{width:calc(100% - 4rpx);border-left:1rpx solid #9BDBDD;border-right:1rpx solid #9BDBDD;}
+
+
+/* 操作区域 */
+.three{width: 90%;height: 100rpx;margin: 45rpx auto 10rpx auto;display: flex;justify-content: space-between;}
+.three span{width: 100rpx;height: 100rpx;display: inline-block;font-size:30rpx;text-align: center;line-height: 100rpx;color:#515151;}
+
+/* 线条 */
+.four{width: 100%;height: 40rpx;line-height: 40rpx;}
+.line-fl{width: 38%;height: 2rpx;display: inline-block;background: linear-gradient(45deg,white,#9BDBDD);vertical-align: middle;}
+.line_text{display: inline-block;height: 40rpx;width: 24%;text-align: center;vertical-align: middle;color: #9BDBDD;font-size: 28rpx;}
+.line-fr{width: 38%;height: 2rpx;display: inline-block;background: linear-gradient(45deg,#9BDBDD,white);vertical-align: middle;}
+
+/* 切换 */
+.journal{width:90%;height: 100rpx;margin:auto ; background:linear-gradient(45deg,#9BDBDD,rgba(155,219,221,.6),rgba(255,255,255,.5),rgba(155,219,221,.4)); position: fixed;left:0;right: 0;bottom:6rpx;text-align: center;line-height: 100rpx;transition:width 100ms ease,height 100ms ease;
+box-shadow: 8rpx 6rpx 6rpx rgba(0,0,0,.5);}
+/*切换状态下的样式 */
+  .active{box-shadow: none;width: 86%;height: 94rpx;}
+  .addActive{background:linear-gradient(45deg,rgba(79,159,247,.4),rgba(255,255,255,.5),rgba(79,159,247,.6),#4F9FF7);}
+
+
+/* 添加区域  rgba(79,159,247)*/
+.five{width: 100%;position:absolute;left: 0; transform: translateY(-100%);}
+.add{border-color:#4F9FF7;}
+.second input,.date{width:calc(100% - 100rpx);height: 100%;padding-left: 100rpx;text-align: left;}
+.five .second_one span{color:#4F9FF7;}
+.five textarea{background:rgba(79,159,247,.3);height: 420rpx; border-color:#4F9FF7;}
+.five .second_one:last-child{border-color:#4F9FF7;}
+.addnr{background: rgba(79,159,247,.7);border-color:#4F9FF7;}
+.addAll{width: 100%;height: 230rpx; text-align: center;font-size: 80rpx;color:#4F9FF7;line-height: 230rpx;margin: 20rpx 0;}
+picker{width:calc(85% - 102rpx);padding-left: 100rpx;text-align: left;border-right: 1rpx solid #4F9FF7;}
+.end{height: 80rpx;position: relative;}
+.xc{width: 0rpx;height: 0rpx;position: absolute;
+  border-left: 20rpx solid transparent;
+  border-right: 20rpx solid transparent;transition: all 1s;
+  border-top: 40rpx solid rgba(79,159,247,.7);
+  top: 0;left: 0;bottom: 0;right: 0;margin: auto;}
+
+
+  #text{width: 100%;height:270rpx;transition: all 1s linear;
+    position: absolute;
+    bottom: 81rpx;left: 0rpx;
+  }
+  #text span{width: 100%;height: 60rpx;line-height: 60rpx;opacity: 0;display:block;margin-top:10rpx;color:#4F9FF7;transition: all 1s linear;}
+  /* 选中行程类型样式 */
+  .xcActive{font-size: 20rpx;background: #4F9FF7;}
+  .upActive{transform: rotate(180deg);}
+
+  /* 马赛克 pointer-events:none穿透属性*/
+  .mask{position:fixed;left:0rpx;top:0rpx;background:rgba(0,0,0,.5);z-index: 999;pointer-events:none}
+

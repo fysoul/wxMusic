@@ -1,0 +1,40 @@
+
+<view class="line">
+            <span class="line-fl"></span>
+            <span class="line_text">我的推荐</span>
+            <span class="line-fr"></span>
+</view>
+
+<view class="middle clear">
+    <!-- 侧边栏    -->
+    <view class="nav fl">
+        <view class="tag icon-dm2 iconfont {{flag?'active':''}} {{selectTag==0?'activeTag':''}} {{selectnum==0?'activetype':''}}" data-id='{{0}}' style="transition:all {{selectnum==-1?300:300}}ms ease;" bindtap="addTag"> 动漫</view>
+        <view class="tag icon-yingshi2 iconfont {{selectnum==1?'activetype':''}}  {{flag?'active':''}} {{selectTag==1?'activeTag':''}}" data-id='{{1}}' style="transition:all {{selectnum==-1?500:300}}ms ease;" bindtap="addTag"> 影视</view>
+        <view class="tag icon-yy3 iconfont {{selectnum==2?'activetype':''}} {{flag?'active':''}} {{selectTag==2?'activeTag':''}}" data-id='{{2}}' style="transition:all {{selectnum==-1?700:300}}ms ease;" bindtap="addTag"> 音乐</view>
+        <view class="tag icon-yule3 iconfont {{selectnum==3?'activetype':''}} {{flag?'active':''}} {{selectTag==3?'activeTag':''}}" data-id='{{3}}' style="transition:all {{selectnum==-1?900:300}}ms ease;" bindtap="addTag"> 娱乐</view>
+        <view class="tag icon-qita1 iconfont {{selectnum==4?'activetype':''}} {{flag?'active':''}} {{selectTag==4?'activeTag':''}}" data-id='{{4}}' style="transition:all {{selectnum==-1?1100:300}}ms ease;" bindtap="addTag"> 其他</view>
+    </view>
+     <!-- 中间内容部分 -->
+     <view class="text fl">
+        <input maxlength="12" type="text" data-id="{{5}}" bindinput="addTitle" placeholder="输入标题" value="{{updateFlag?textData.title:textflag?'':''}}"/>
+        <textarea class="jj" maxlength="90" data-id="{{6}}"type="text" placeholder="该标题的描述" bindinput="addTitle" value="{{updateFlag?textData.text:textflag?'':''}}"></textarea>
+        <view class="add" bindtap="addRec" wx:if="{{!updateFlag}}">添 加</view>
+        <view class="add" catchtap="updateRec" data-id="{{textData.id}}" wx:else>修 改</view>
+     </view>
+</view>
+
+
+
+
+<!-- 尾部 -->
+<view class="end"> 
+
+   <view class="end_Box" hidden="{{array.length!=0}}">正在加载内容</view>
+  <view class="end_text  {{number==index?'activetype':''}}" wx:for="{{array}}" data-id="{{index}}" wx:key='key' bindtap="select">
+     <text class="{{item.type==0?'icon-dm2':item.type==1?'icon-yingshi2':item.type==2?'icon-yy3':item.type==3?'icon-yule3':'icon-qita1'}} iconfont"></text>
+     <text class="title">{{item.title}}</text>
+     <text data-id="{{index}}" catchtap="goUpdate">简介</text>
+        <text class="{{item.flag==2?'iconfont icon-tuijian1 font':''}}" data-id="{{index}}" bindtap="{{item.flag==0?'load':''}}">{{item.flag==0?'上传':item.flag==1?'审核中':''}}</text>  
+     <text data-id="{{index}}" bindtap="removeRec">删除</text>
+  </view>
+</view>

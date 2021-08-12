@@ -1,0 +1,17 @@
+
+<!--引入公共部分 -->
+<import src="../template/template.wxml"/>
+<view class="manage">
+   <view class="fr" bindtap="goUp">管理</view>
+</view>
+<view class="down"></view>
+<view class="line">
+        <view class="line_l"></view>
+        <view class="line_r"></view>
+</view>
+<!--引入公共部分 -->
+<import src="../template/template.wxml"/>
+<!-- 歌曲模块 -->
+<template is="showItem"  data="{{publicArray,gqFlag,gqTimeFlag,now,maskFlag,msg}}"/>
+<!-- 歌单模块 -->
+<template is="msgItem"  data="{{animationList,newListFlag,listArray,msg,listHave}}"/>

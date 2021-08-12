@@ -1,0 +1,141 @@
+
+<!-- 歌单模块 -->
+<template name="msgItem">
+    <!-- 添加到歌单 -->
+    <!-- <view class="selectNumber clear">
+            <view class="fl">已选定一首</view>
+            <view class="fr" bindtap="closeMusicList">取消</view>
+    </view> -->
+    <view class="addList" animation='{{animationList}}'>
+        <view class="mask_addList" hidden="{{newListFlag}}">
+            <view class="box_msgList">
+                <view class="list_text">新建歌单</view>
+                <input type="text" maxlength="12" value="新歌单{{listArray.length+1}}" bindinput="value"/>
+                <view class="add_botton fl" data-msg='{{msg}}' data-creat="新歌单{{listArray.length+1}}" bindtap="addNewList">确定</view>
+                <view class="add_botton rest_botton fl" bindtap="closeListMask">取消</view>
+            </view>
+        </view>
+        <view class="selectNumber clear">
+            <view class="fl">已选定一首</view>
+            <view class="fr" bindtap="closeMusicList">取消</view>
+        </view>
+    <view class="all_box">
+        <view class="box_list new_list clear" bindtap="goNewList">
+          <image class="iconfont icon-tj1 fl"></image>
+          <view class="fl">新建歌单</view>
+        </view>
+
+        <view class="box_list clear" wx:for="{{listArray}}" wx:key='k' wx:for-item='list' wx:for-index='li' bindtap="{{listHave[li]==li?'':'addCloudList'}}" data-index='{{li}}' data-msg='{{msg}}' style="color:{{listHave[li]==li?'rgba(210,210,210,1)':''}}">
+            <image class="fl" src="{{list.url?list.url:(list.music[list.music.length-1].img||'cloud://cloud2-5gvrnfck04d8ef24.636c-cloud2-5gvrnfck04d8ef24-1306243438/music/music.png')}}"></image>
+            <view class="shadow"></view>
+            <view class="list_text fl">
+                <view>{{list.listName}}</view>
+                <view>{{list.music.length}}首</view>
+            </view>
+        </view>
+    </view>   
+</view>
+</template>
+
+<template name="showItem">
+        <view class="box_gq">
+            <view class="gq {{gqFlag==index?'gqActive':''}} {{gqTimeFlag==index?'gqAnimate':''}}" wx:for="{{publicArray}}" wx:key='k' bindtap="upload" data-nowarr='{{now}}' data-music='{{item}}' data-index='{{index}}'>
+                <view class="gq_xx">{{index>=9?(index+1):'0'+(index+1)}}</view>
+                <view class="gq_xx maxWidth"> 
+                <view class="">{{item.name}}</view>
+                <view class="author"><image src="../../../images/music/wc.png" style="width:{{item.src?'30rpx':'0rpx'}};height:{{item.src?'30rpx':'0rpx'}}"></image> {{item.author}}<text class="fee" style="background:{{item.fee==1?'#1ECD99':''}};">{{item.fee==1?'fee':''}}</text></view>
+                </view>
+                <view class="gq_xx iconfont icon-slh1" catchtap="goMask" data-listNumber='{{index}}' data-item="{{item}}"></view>
+            </view>
+        </view>
+        <!-- 操作区域 -->
+        <view class="mask" hidden="{{maskFlag}}" bindtap="closeMask">
+            <!-- <view class="close_mask" bindtap="closeMask"></view> -->
+            <view class="caozuo_box">
+            <view class="music_msg">{{msg.name+' - '+msg.author}}</view>
+            <view class="caozuo_msg">
+                    <view bindtap="goIndexDown" data-nowmusic="{{msg}}">
+                        <span class="iconfont {{msg.src?'icon-yxz1':'icon-xiazai'}}"></span>
+                        <view>下载</view>
+                    </view>
+                    <view bindtap="goIndexLike" data-nowmusic="{{msg}}" >
+                        <span class="iconfont icon-sc" style="color:{{msg.like?'red':''}}"></span>
+                        <view>收藏</view>
+                    </view>
+                    <view  data-nowmusic="{{msg}}"  bindtap="musicList">
+                        <span class="iconfont icon-tj1"></span>
+                        <view>添加</view>
+                    </view>
+                    <view data-nowmusic="{{msg}}"  bindtap="remove">
+                        <span class="iconfont icon-shanchu"></span>
+                        <view>删除</view>
+                    </view>
+            </view>
+            <view class="caozuo_msg">
+                <view>
+                        <span style="color:#1ECD99;">暂</span>
+                        <view>mv</view>
+                    </view>
+                    <view>
+                        <span style="color:#1ECD99;">未</span>
+                        <view>专辑</view>
+                    </view>
+                    <view>
+                        <span style="color:#1ECD99;">开</span>
+                        <view>歌手</view>
+                    </view>
+                    <view>
+                        <span style="color:#1ECD99;">放</span>
+                        <view>海报</view>
+                    </view>
+            </view>
+            </view>
+        </view>
+</template>
+<!-- 
+首页中操作样式 -->
+<template name="indexItem">
+      <!-- 操作区域 -->
+      <view class="mask" hidden="{{maskFlag}}"  bindtap="closeMask">
+            <view class="close_mask"></view>
+            <view class="caozuo_box">
+            <view class="music_msg">{{msg.name+' - '+msg.author}}</view>
+            <view class="caozuo_msg">
+                    <view bindtap="download" data-nowmusic="{{msg}}">
+                        <span class="iconfont {{msg.src?'icon-yxz1':'icon-xiazai'}}"></span>
+                        <view>下载</view>
+                    </view>
+                    <view bindtap="changeLike" data-nowmusic="{{msg}}" >
+                        <span class="iconfont icon-sc" style="color:{{msg.like?'red':''}}"></span>
+                        <view>收藏</view>
+                    </view>
+                    <view  data-nowmusic="{{msg}}"  bindtap="musicList">
+                        <span class="iconfont icon-tj1"></span>
+                        <view>添加</view>
+                    </view>
+                    <view>
+                        <span class="iconfont icon-shanchu" data-msg="msg" bindtap="remove"></span>
+                        <view>删除</view>
+                    </view>
+            </view>
+            <view class="caozuo_msg">
+                <view>
+                        <span style="color:#1ECD99;">暂</span>
+                        <view>mv</view>
+                    </view>
+                    <view>
+                        <span style="color:#1ECD99;">未</span>
+                        <view>专辑</view>
+                    </view>
+                    <view>
+                        <span style="color:#1ECD99;">开</span>
+                        <view>歌手</view>
+                    </view>
+                    <view>
+                        <span style="color:#1ECD99;">放</span>
+                        <view>海报</view>
+                    </view>
+            </view>
+            </view>
+        </view>
+</template>

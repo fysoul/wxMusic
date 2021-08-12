@@ -1,0 +1,120 @@
+<swiper easing-function="easeOutCubic" style="width:{{system.windowWidth+'px'}};height:{{system.windowHeight+'px'}};" duration='{{go}}' current="{{pageNumber}}" data-index='{{pageNumber}}' bindtransition='togglePage' bindanimationfinish='change' hidden="{{addFlag}}">
+
+  <!-- <swiper-item hidden="{{array.length!=0}}">
+     <view>{{array?'待加载数据':array.length==0?'你还没有日志':''}}</view>
+  </swiper-item> -->
+
+  <swiper-item wx:for="{{array}}" wx:key='key'>
+    <!-- 浏览区域-->
+    <view class="all">
+          <!-- 记录区域 -->
+          <view  class="first clear center">
+            <view class="pageNumber">{{index+1}}/{{array.length}}</view>
+            <view class="fl first_one">你有{{bj}}条标记</view>        
+            <input class="fl first_one" type="text" confirm-type="go" placeholder="输入页码" value="{{kong}}" bindconfirm='goPage'/>
+          </view>
+
+          <!-- 内容区域 -->
+          <view class="second">
+            <view class="second_one">
+              <span class="iconfont icon-wz2"></span>
+              <view>{{item.dw}}</view>
+            </view>
+
+            <view class="second_one">
+              <span class="iconfont icon-rq1"></span>
+              <view>{{item.sj}}</view>
+            </view>
+
+            <view class="second_one">
+              <span class="iconfont icon-bt1"></span>
+              <view>{{item.bt}}</view>
+            </view>
+
+            <view class="second_two second_one">
+              内 容
+            </view>
+            <textarea value="{{item.nr}}" maxlength="200" disabled="{{update.flag}}" bindinput="updateText"></textarea>
+
+            <view class="second_one second_three">
+              <span class="iconfont icon-rq2"></span>
+              <view style="color:{{item.xc==''?'rgba(0,0,0,.5)':''}}">{{item.xc==''?'当前无行程':item.xc}}</view>
+            </view>
+
+          </view>
+
+          <!-- 操作区域 -->
+          <view class="three">
+              <span class="iconfont icon-xiugai" data-id="{{index}}" wx:if="{{update.flag}}" bindtap="goUpdate">修改</span>
+              <span class="iconfont icon-wc3" data-id="{{index}}" wx:else bindtap="updateGournal">保存</span>
+              <span class="iconfont icon-xc1" data-id="{{index}}">推送</span>
+              <span class="iconfont icon-bj3" data-id="{{index}}" style="color:{{item.flag?'red':''}}" bindtap="updateFlag">标记</span>
+              <span class="iconfont icon-shanchu" data-id="{{index}}"  bindtap="removeGournal">删除</span>
+          </view>
+
+          <!-- 线条区域 -->
+        <view class="four">
+            <span class="line-fl"></span>
+            <span class="line_text">左右滑动</span>
+            <span class="line-fr"></span>
+        </view> 
+    </view>
+  </swiper-item>
+</swiper>
+
+<!-- 全局马赛克 -->
+<view class="mask" style="width:{{system.windowWidth+'px'}};height:{{system.windowHeight+'px'}};" hidden="{{!bgcolor}}"></view>
+
+
+<!-- 添加区域 -->
+<view class="five" hidden="{{!addFlag}}" style="height:{{addPage.height}}" animation='{{animationData}}'>
+     <!-- 线条区域 -->
+     <view class="four" style="margin:65rpx 0rpx;color:#4F9FF7;">
+        <span class="line-fl" style="background: linear-gradient(45deg,white,#4F9FF7)"></span>
+        <span class="line_text" style="color:#4F9FF7;">上传日志</span>
+        <span class="line-fr" style="background: linear-gradient(45deg,#4F9FF7,white)"></span>
+     </view> 
+
+      <view class="second">
+         <view class="second_one  add">
+           <span class="iconfont icon-wz2" bindtap="getDw"></span>
+           <input type="text" data-id='{{1}}' maxlength="16" placeholder="点击图标定位/也可自定义" bindinput="addText" value="{{addFlag?address:''}}"/>
+         </view>
+
+         <view class="second_one add">
+           <span class="iconfont icon-rq1"></span>
+            <view class='date'>当前日期:{{date}}</view>
+         </view>
+
+         <view class="second_one add">
+           <span class="iconfont icon-bt1"></span>
+           <input type="text" data-id='{{2}}' value="{{addFlag?'':''}}" placeholder="请输入标题" bindblur="addText" maxlength="12"/>
+         </view>
+
+         <view class="second_two second_one addnr">
+           内 容
+         </view>
+         <textarea maxlength="200" data-id='{{3}}' value="{{addFlag?'':''}}" bindinput="addText"></textarea>
+
+         <view class="second_one second_three clear">
+           <span class="iconfont icon-rq2"></span>
+           <picker class="fl" mode="date" start="2021-01-01" end="2022-01-01" data-id='{{4}}' style="color:{{day!=''?'#4F9FF7':'rgba(0,0,0,.5)'}}" bindchange="addText">{{day==''?'默认无行程':day}}</picker>
+           <view class="fl end" style="width:15%"   bindtap="show">
+             <view id="text" animation='{{animationText}}'>
+               <span class="{{selectId==5?'xcActive':''}}" style="opacity:{{show?1:''}};transition: all {{show?'1.6s':'400ms'}} linear;" data-id='{{5}}' catchtap="addText">旅 行</span>
+                  <span  class="{{selectId==6?'xcActive':''}}"  style="opacity:{{show?1:''}};transition: all {{show?'1.2s':'800ms'}} linear;" data-id='{{6}}' catchtap="addText">工 作</span>
+                  <span class="{{selectId==7?'xcActive':''}}"  style="opacity:{{show?1:''}};transition: all {{show?'800ms':'1.2s'}} linear;" data-id='{{7}}' catchtap="addText">休 息</span>
+                  <span class="{{selectId==8?'xcActive':''}}"  style="opacity:{{show?1:''}};transition: all {{show?'400ms':'1.6s'}} linear;" data-id='{{8}}' catchtap="addText">娱 乐</span>
+             </view>
+
+             <text class="xc {{show?'upActive':''}}"></text>
+           </view>
+           
+         </view>
+      </view>
+
+      <view class="addAll iconfont icon-tj1" bindtap="addCloud">
+      </view>
+</view>
+
+<view class="journal {{isSelect?'active':''}} {{addFlag?'addActive':''}}" bindtap='isSelect'>切 换</view>
